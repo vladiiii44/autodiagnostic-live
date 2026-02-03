@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, 
+            static_folder='static',
+            template_folder='templates')
 app.config.from_object(Config)
 
 CONTACT_INFO = {
@@ -51,7 +53,21 @@ SERVICES = [
         'icon': 'fas fa-exchange-alt'
     }
 ]
+CONTACT_INFO = {
+    'name': 'Павел',
+    'phone': '+375 (29) 628-50-00',
+    'phone_raw': '+375296285000',
+    'work_hours': 'Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00',
+    'address': 'Минск и область'
+}
 
+SERVICES = [
+    {
+        'id': 1,
+        'title': 'Компьютерная диагностика',
+        'description': 'Считывание и расшифровка кодов ошибок, проверка всех систем автомобиля',
+        'icon': 'fas fa-laptop-code'
+    },
 @app.route('/')
 def index():
     return render_template('index.html', services=SERVICES[:3], contact=CONTACT_INFO)
