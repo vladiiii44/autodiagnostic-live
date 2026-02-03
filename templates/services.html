@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="services-page">
+    <div class="container">
+        <h1 class="page-title">Наши услуги</h1>
+        <p class="page-subtitle">Полный перечень услуг по диагностике автомобилей</p>
+        
+        <div class="services-list">
+            {% for service in services %}
+            <div class="service-item {% if service.special %}service-special{% endif %}">
+                <div class="service-item-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <div class="service-item-content">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    {% if service.special %}
+                    <div class="special-tag">
+                        <i class="fas fa-star"></i> Дилерское оборудование
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="services-note">
+            <h3><i class="fas fa-info-circle"></i> Важная информация</h3>
+            <p>Для Mercedes-Benz используется дилерский мультиплексор, что обеспечивает:</p>
+            <ul>
+                <li>Полный доступ ко всем системам автомобиля</li>
+                <li>Возможность программирования и кодирования</li>
+                <li>Точную диагностику заводского уровня</li>
+                <li>Работу с самыми современными моделями</li>
+            </ul>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Запись на диагностику</h2>
+            <p>Позвоните или оставьте заявку онлайн</p>
+            <div class="cta-buttons">
+                <a href="tel:{{ contact.phone_raw }}" class="btn-call">
+                    <i class="fas fa-phone"></i> {{ contact.phone }}
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn-primary">
+                    <i class="fas fa-calendar-alt"></i> Онлайн запись
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

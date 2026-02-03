@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="thanks-page">
+    <div class="container">
+        <div class="thanks-card">
+            <div class="thanks-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1>Спасибо, {{ name }}!</h1>
+            <p>Ваша заявка на диагностику принята. Мы свяжемся с вами в ближайшее время.</p>
+            
+            <div class="contact-details">
+                <p><strong>Телефон для связи:</strong></p>
+                <p class="phone-big">{{ contact.phone }}</p>
+                
+                <p><strong>Режим работы:</strong></p>
+                <p>{{ contact.work_hours }}</p>
+            </div>
+            
+            <div class="thanks-buttons">
+                <a href="{{ url_for('index') }}" class="btn-back">
+                    <i class="fas fa-home"></i> На главную
+                </a>
+                <a href="tel:{{ contact.phone_raw }}" class="btn-call">
+                    <i class="fas fa-phone"></i> Позвонить сейчас
+                </a>
+            </div>
+            
+            <div class="special-info">
+                <p><i class="fas fa-star"></i> Для Mercedes используем дилерский мультиплексор</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero" style="background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.8)), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Профессиональная диагностика автомобилей <span class="highlight">с 2000 года</span></h1>
+            <p class="hero-subtitle">Mercedes - дилерский мультиплексор</p>
+            
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Mercedes дилерским оборудованием</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Все марки с 2000 года выпуска</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Выездная диагностика по Минску</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="{{ url_for('contact') }}" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Записаться на диагностику
+                </a>
+                <a href="tel:{{ contact.phone_raw }}" class="btn-secondary">
+                    <i class="fas fa-phone"></i> {{ contact.phone }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-preview">
+    <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card {% if service.special %}special-card{% endif %}">
+                <div class="service-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+                {% if service.special %}
+                <div class="special-badge">
+                    <i class="fas fa-star"></i> Дилерское оборудование
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center">
+            <a href="{{ url_for('services') }}" class="btn-outline">Все услуги</a>
+        </div>
+    </div>
+</section>
+
+<section class="specialization">
+    <div class="container">
+        <h2 class="section-title">Специализация</h2>
+        <div class="specialization-content">
+            <div class="special-card with-image">
+                <div class="special-image">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Mercedes-Benz диагностика" 
+                         style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="special-text">
+                    <i class="fas fa-star"></i>
+                    <h3>Mercedes-Benz</h3>
+                    <p>Диагностика дилерским мультиплексором</p>
+                    <ul>
+                        <li>Полная диагностика всех систем</li>
+                        <li>Программирование и кодирование</li>
+                        <li>Адаптации и обучение</li>
+                        <li>Считывание заводских кодов</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="special-card">
+                <i class="fas fa-check-double"></i>
+                <h3>Все марки</h3>
+                <p>Работаем с автомобилями всех марок с 2000 года выпуска</p>
+                <ul>
+                    <li>BMW, Audi, Volkswagen</li>
+                    <li>Toyota, Honda, Nissan</li>
+                    <li>Корейские и китайские авто</li>
+                    <li>Отечественные автомобили</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="photo-gallery">
+    <div class="container">
+        <h2 class="section-title">Наша работа</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Mercedes-Benz" 
+                     style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="gallery-caption">Mercedes-Benz</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Диагностическое оборудование" 
+                     style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="gallery-caption">Диагностическое оборудование</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Автомобиль" 
+                     style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="gallery-caption">Комплексная диагностика</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

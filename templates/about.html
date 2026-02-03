@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-page">
+    <div class="container">
+        <h1 class="page-title">О нас</h1>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Mercedes-Benz" 
+                         style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                </div>
+                
+                <h2>Профессиональная диагностика автомобилей</h2>
+                <p>Специализируемся на диагностике автомобилей с 2000 года выпуска. Особое внимание уделяем марке Mercedes-Benz с использованием дилерского мультиплексора.</p>
+                
+                <div class="photo-row">
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Диагностическое оборудование"
+                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                        <p>Современное оборудование</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Автомобиль"
+                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                        <p>Автомобили всех марок</p>
+                    </div>
+                </div>
+                
+                <h3>Наши преимущества:</h3>
+                <ul class="advantages">
+                    <li><i class="fas fa-star"></i> <strong>Mercedes:</strong> Дилерский мультиплексор</li>
+                    <li><i class="fas fa-car"></i> <strong>Все марки:</strong> Работаем с автомобилями с 2000 года выпуска</li>
+                    <li><i class="fas fa-tools"></i> <strong>Оборудование:</strong> Современные диагностические сканеры</li>
+                    <li><i class="fas fa-home"></i> <strong>Выезд:</strong> Выездная диагностика по Минску и области</li>
+                    <li><i class="fas fa-user-tie"></i> <strong>Опыт:</strong> Более 10 лет в диагностике</li>
+                </ul>
+                
+                <div class="mercedes-highlight">
+                    <h3><i class="fas fa-star"></i> Mercedes-Benz</h3>
+                    <p>Используем дилерский мультиплексор для полной диагностики всех систем Mercedes. Работаем с моделями с 2000 года выпуска.</p>
+                </div>
+            </div>
+            
+            <div class="about-contact">
+                <div class="contact-card">
+                    <h3><i class="fas fa-address-card"></i> Контактная информация</h3>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <h4>Специалист</h4>
+                            <p>{{ contact.name }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p><a href="tel:{{ contact.phone_raw }}">{{ contact.phone }}</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Режим работы</h4>
+                            <p>{{ contact.work_hours }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Обслуживание</h4>
+                            <p>{{ contact.address }}</p>
+                            <p class="small">Выездная диагностика доступна</p>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url_for('contact') }}" class="btn-contact">
+                        <i class="fas fa-pen"></i> Записаться на диагностику
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

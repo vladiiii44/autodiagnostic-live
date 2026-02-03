@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="contact-page">
+    <div class="container">
+        <h1 class="page-title">Запись на диагностику</h1>
+        
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h2><i class="fas fa-calendar-alt"></i> Форма записи</h2>
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" value="{{ contact.phone }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="car_model">Марка и модель</label>
+                        <input type="text" id="car_model" name="car_model" placeholder="Например: Mercedes E-Class">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">Год выпуска</label>
+                            <input type="number" id="year" name="year" min="2000" placeholder="2000+">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service_type">Тип диагностики</label>
+                            <select id="service_type" name="service_type">
+                                <option value="">Выберите услугу</option>
+                                <option value="computer">Компьютерная диагностика</option>
+                                <option value="engine">Диагностика двигателя</option>
+                                <option value="mercedes">Диагностика Mercedes</option>
+                                <option value="electrical">Диагностика электрооборудования</option>
+                                <option value="suspension">Диагностика подвески</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Описание проблемы</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                    </button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <div class="info-card">
+                    <h2><i class="fas fa-phone-alt"></i> Контакты</h2>
+                    
+                    <div class="contact-method">
+                        <h3><i class="fas fa-phone"></i> Телефон</h3>
+                        <p><a href="tel:{{ contact.phone_raw }}">{{ contact.phone }}</a></p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3><i class="fas fa-user"></i> Специалист</h3>
+                        <p>{{ contact.name }}</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3><i class="fas fa-clock"></i> График работы</h3>
+                        <p>{{ contact.work_hours }}</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3><i class="fas fa-map-marker-alt"></i> Обслуживание</h3>
+                        <p>{{ contact.address }}</p>
+                        <p class="note">Выездная диагностика</p>
+                    </div>
+                    
+                    <div class="special-note">
+                        <h4><i class="fas fa-star"></i> Особенность</h4>
+                        <p>Для Mercedes используем дилерский мультиплексор</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="direct-contact">
+            <h2>Свяжитесь напрямую</h2>
+            <div class="contact-buttons">
+                <a href="tel:{{ contact.phone_raw }}" class="direct-btn call">
+                    <i class="fas fa-phone"></i> Позвонить
+                </a>
+                <a href="https://wa.me/{{ contact.phone_raw }}" class="direct-btn whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="viber://chat?number=%2B{{ contact.phone_raw }}" class="direct-btn viber" target="_blank">
+                    <i class="fab fa-viber"></i> Viber
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

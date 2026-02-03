@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Диагностика авто с 2000 года | Павел +375 (29) 628-50-00{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <i class="fas fa-car"></i>
+                    <span>AutoDiag<span class="logo-accent">.by</span></span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="{{ url_for('services') }}">Услуги</a></li>
+                    <li><a href="{{ url_for('about') }}">О нас</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="btn-nav">Записаться</a></li>
+                </ul>
+                
+                <div class="contact-header">
+                    <a href="tel:{{ contact.phone_raw }}" class="phone">
+                        <i class="fas fa-phone"></i>
+                        {{ contact.phone }}
+                    </a>
+                    <div class="work-hours">{{ contact.work_hours }}</div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-car"></i> AutoDiag.by</h3>
+                    <p>Профессиональная диагностика автомобилей с 2000 года выпуска</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-user"></i> {{ contact.name }}</p>
+                    <p><i class="fas fa-phone"></i> {{ contact.phone }}</p>
+                    <p><i class="fas fa-clock"></i> {{ contact.work_hours }}</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Специализация</h4>
+                    <ul>
+                        <li>Mercedes - дилерский мультиплексор</li>
+                        <li>Все марки с 2000 года</li>
+                        <li>Выездная диагностика</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Быстрая связь</h4>
+                    <a href="{{ url_for('contact') }}" class="btn-footer">Записаться онлайн</a>
+                    <div class="social-links">
+                        <a href="https://t.me/{{ contact.phone_raw }}" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="viber://chat?number=%2B{{ contact.phone_raw }}" target="_blank"><i class="fab fa-viber"></i></a>
+                        <a href="https://wa.me/{{ contact.phone_raw }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoDiag.by. Диагностика Mercedes дилерским мультиплексором.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/{{ contact.phone_raw }}" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
